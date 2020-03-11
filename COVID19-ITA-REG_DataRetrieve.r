@@ -3,6 +3,8 @@
 # Get data
 covid19_regioni <- read.csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv", header = TRUE) # Read regional CSV
 
+covid19_regioni[] <- lapply(covid19_regioni, gsub, pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]", replacement="") # Removes the time, keeps the date
+
 # Split data in regional subsets
 dataset_Piemonte <- subset(covid19_regioni, codice_regione == 1)
 dataset_ValleDAosta <- subset(covid19_regioni, codice_regione == 2)
@@ -24,7 +26,3 @@ dataset_Basilicata <- subset(covid19_regioni, codice_regione == 17)
 dataset_Calabria <- subset(covid19_regioni, codice_regione == 18)
 dataset_Sicilia <- subset(covid19_regioni, codice_regione == 19)
 dataset_Sardegna <- subset(covid19_regioni, codice_regione == 20)
-
-
-  
-  
