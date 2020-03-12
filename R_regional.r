@@ -36,26 +36,5 @@ for (region_code in 1:20) {
   func_reg_graph(region_subset, region_plot_dir)
 }
 
-# func_reg_graph(dataset_Abruzzo, "plot/regional/abruzzo.png")
-# func_reg_graph(dataset_Basilicata, "plot/regional/basilicata.png")
-# func_reg_graph(dataset_Calabria, "plot/regional/calabria.png")
-# func_reg_graph(dataset_Campania, "plot/regional/campania.png")
-# func_reg_graph(dataset_EmiliaRomagna, "plot/regional/emiliaromagna.png")
-# func_reg_graph(dataset_FriuliVeneziaGiulia, "plot/regional/friuliveneziagiulia.png")
-# func_reg_graph(dataset_Lazio, "plot/regional/lazio.png")
-# func_reg_graph(dataset_Liguria, "plot/regional/liguria.png")
-# func_reg_graph(dataset_Lombardia, "plot/regional/lombardia.png")
-# func_reg_graph(dataset_Marche, "plot/regional/marche.png")
-# func_reg_graph(dataset_Molise, "plot/regional/molise.png")
-# func_reg_graph(dataset_Piemonte, "plot/regional/piemonte.png")
-# func_reg_graph(dataset_Puglia, "plot/regional/puglia.png")
-# func_reg_graph(dataset_Sardegna, "plot/regional/sardegna.png")
-# func_reg_graph(dataset_Sicilia, "plot/regional/sicilia.png")
-# func_reg_graph(dataset_Toscana, "plot/regional/toscana.png")
-# #func_reg_graph(dataset_TrentinoAltoAdige, "plot/regional/trentinoaa.png") # Needs improvement!
-# func_reg_graph(dataset_Umbria, "plot/regional/umbria.png")
-# func_reg_graph(dataset_ValleDAosta, "plot/regional/valledaosta.png")
-# func_reg_graph(dataset_Veneto, "plot/regional/veneto.png")
-
 
 
