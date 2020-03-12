@@ -1,5 +1,5 @@
 # This R code generates REGIONAL graphs
-clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalilzed, non-ICU", "Hospitalized, total") #Legenda
+clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalized, non-ICU", "Hospitalized, total") #Legenda
 colori <- c("red", "gray0", "seagreen4", "gold", "red3", "cyan", "mediumorchid3", "deepskyblue2", "navyblue") #Colors
 
 func_reg_graph <- function(dataset_cache, file_name) { # This function generate a general graph for each region
