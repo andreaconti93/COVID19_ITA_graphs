@@ -10,7 +10,7 @@ covid19_regioni[] <- lapply(covid19_regioni, gsub, pattern="[0-9][0-9]:[0-9][0-9
 covid19_province[] <- lapply(covid19_province, gsub, pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]", replacement="")
 covid19_italia[] <- lapply(covid19_italia, gsub, pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]", replacement="")
 
-# Split data in regional subsets
+# Splits data in regional subsets
 dataset_Piemonte <- subset(covid19_regioni, codice_regione == 1)
 dataset_ValleDAosta <- subset(covid19_regioni, codice_regione == 2)
 dataset_Lombardia <- subset(covid19_regioni, codice_regione == 3)

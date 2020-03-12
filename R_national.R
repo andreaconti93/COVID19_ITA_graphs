@@ -1,6 +1,13 @@
 # This R code generates REGIONAL graphs
+
+
+
 clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalilzed, non-ICU", "Hospitalized, total") #Legenda
 colori <- c("red", "gray0", "seagreen4", "gold", "red3", "cyan", "mediumorchid3", "deepskyblue2", "navyblue") #Colors
+
+
+
+
 
 func_reg_graph <- function(dataset_cache, file_name) { # This function generate a general graph for each region
   png(file_name, width = 2500, height = 1250, pointsize = 50)
@@ -34,7 +41,7 @@ func_reg_graph(dataset_Puglia, "plot/regional/puglia.png")
 func_reg_graph(dataset_Sardegna, "plot/regional/sardegna.png")
 func_reg_graph(dataset_Sicilia, "plot/regional/sicilia.png")
 func_reg_graph(dataset_Toscana, "plot/regional/toscana.png")
-#func_reg_graph(dataset_TrentinoAltoAdige, "plot/regional/trentinoaa.png") # Needs improvement!
+#func_reg_graph(dataset_TrentinoAltoAdige, "plot/regional/trentinoaa.png")
 func_reg_graph(dataset_Umbria, "plot/regional/umbria.png")
 func_reg_graph(dataset_ValleDAosta, "plot/regional/valledaosta.png")
 func_reg_graph(dataset_Veneto, "plot/regional/veneto.png")
