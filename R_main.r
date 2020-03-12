@@ -11,6 +11,7 @@ source("R_dataretrieve.r") # retrieves data from DPC GitHub
 # Number of days
 day_count <- as.numeric(dim(covid19_italia)[1])
 
+# TODO: get top 5 regions
 top_1 <- dataset_Lombardia
 top_2 <- dataset_EmiliaRomagna
 top_3 <- dataset_Veneto
