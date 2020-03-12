@@ -23,16 +23,20 @@ func_reg_graph <- function(dataset_cache, file_name) {
 for (region_code in 1:20) {
   region_subset <- subset(covid19_regioni, codice_regione == region_code)
   
+  # Handles and merge those maniacs of Trento and Bolzano
   if (region_code == 4){
-    #TODO: merge trento and bolzano
-    next()
-    # Handles Trento and Bolzano as a single region (as it should be, you maniacs!)
-    region_name <- "trentinoaa"
+    # Drops non-numerical columns
+    region_subset <- select(region_subset, -c(2:6))
+    # Converts to numeric
+    region_subset[, c(2:11)] <- sapply(region_subset[, c(2:11)], as.numeric)
+    # Aggregates by date, summing every other field
+    region_subset <- aggregate(. ~data, data=region_subset, sum)
+    # Inserts dropped columns after date (first) columns
+    region_subset <- add_column(region_subset, stato = "ITA", codice_regione = 4, denominazione_regione = "Trentino Alto Adige", lat = 46.06893511, long = 11.12123097, .after = 1)
   }
-  else {
-    region_name <- gsub(" ", "_", region_subset$denominazione_regione[1])
-  }
-  region_plot_dir = paste("plot/regional/", region_name, ".png", sep="")
+  
+  sanitized_region_name <- gsub(" ", "_", region_subset$denominazione_regione[1])
+  region_plot_dir = paste("plot/regional/", sanitized_region_name, ".png", sep="")
   func_reg_graph(region_subset, region_plot_dir)
 }
 
