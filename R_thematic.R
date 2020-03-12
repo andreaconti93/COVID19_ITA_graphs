@@ -1,11 +1,7 @@
 #Thematic script for hospitals; regional and top 5 (by total cases)
 
 # GRAPH 1: ICU, top 5
-top_1 <- dataset_Lombardia
-top_2 <- dataset_EmiliaRomagna
-top_3 <- dataset_Veneto
-top_4 <- dataset_Piemonte
-top_5 <- dataset_Marche
+
 
 png("plot/thematic/Top5_ICU.png", width = 2500, height = 1250, pointsize = 50)
 plot(top_1$terapia_intensiva,type = "l", col = "red", xlab = "", ylab = "Cases", main = "Hospitalized, ICU (top 5 regions)", xaxt='n', lwd = 3)
@@ -14,7 +10,7 @@ lines(top_3$terapia_intensiva, type = "l", lwd = 3, col = "green")
 lines(top_4$terapia_intensiva, type = "l", lwd = 3, col = "orange")
 lines(top_5$terapia_intensiva, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
 
 # GRAPH 2: non-ICU, top 5
@@ -25,7 +21,7 @@ lines(top_3$ricoverati_con_sintomi, type = "l", lwd = 3, col = "green")
 lines(top_4$ricoverati_con_sintomi, type = "l", lwd = 3, col = "orange")
 lines(top_5$ricoverati_con_sintomi, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
 
 # GRAPH 3: total hospitalized, top 5
@@ -36,7 +32,7 @@ lines(top_3$totale_ospedalizzati, type = "l", lwd = 3, col = "green")
 lines(top_4$totale_ospedalizzati, type = "l", lwd = 3, col = "orange")
 lines(top_5$totale_ospedalizzati, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
 
 # GRAPH 4: total deceased, top 5
@@ -47,7 +43,7 @@ lines(top_3$deceduti, type = "l", lwd = 3, col = "green")
 lines(top_4$deceduti, type = "l", lwd = 3, col = "orange")
 lines(top_5$deceduti, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
 
 # GRAPH 5: total swabs, top 5
@@ -58,7 +54,7 @@ lines(top_3$tamponi, type = "l", lwd = 3, col = "green")
 lines(top_4$tamponi, type = "l", lwd = 3, col = "orange")
 lines(top_5$tamponi, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
 
 # GRAPH 6: recovered, top 5
@@ -69,5 +65,5 @@ lines(top_3$dimessi_guariti, type = "l", lwd = 3, col = "green")
 lines(top_4$dimessi_guariti, type = "l", lwd = 3, col = "orange")
 lines(top_5$dimessi_guariti, type = "l", lwd = 3, col = "purple")
 legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.8, lwd = 4)
-axis(1, at=1:17, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
+axis(1, at=1:day_count, labels=dataset_Abruzzo$data, las = 2, cex.axis = 0.8)
 dev.off()
