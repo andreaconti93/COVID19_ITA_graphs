@@ -36,6 +36,7 @@ for (region_code in 1:20) {
   }
   
   sanitized_region_name <- gsub(" ", "_", region_subset$denominazione_regione[1])
+  sanitized_region_name <- gsub("'", "_", sanitized_region_name)
   region_plot_dir = paste("plot/regional/", sanitized_region_name, ".png", sep="")
   func_reg_graph(region_subset, region_plot_dir)
 }
