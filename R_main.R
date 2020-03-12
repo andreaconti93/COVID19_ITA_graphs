@@ -9,7 +9,7 @@ library(dplyr)
 
 
 
-day_count <- 17 # number of days. Must be increased by 1 every day
+day_count <- 18 # number of days. Must be increased by 1 every day
 
 source("R_dataretrieve.r") # retrieves data from DPC GitHub
 
