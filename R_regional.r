@@ -24,6 +24,8 @@ for (region_code in 1:20) {
   region_subset <- subset(covid19_regioni, codice_regione == region_code)
   
   if (region_code == 4){
+    #TODO: merge trento and bolzano
+    next()
     # Handles Trento and Bolzano as a single region (as it should be, you maniacs!)
     region_name <- "trentinoaa"
   }
