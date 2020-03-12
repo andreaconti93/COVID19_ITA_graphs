@@ -6,11 +6,10 @@
 # Libraries
 library(dplyr)
 
+source("R_dataretrieve.r") # retrieves data from DPC GitHub
 
 # Number of days
-day_count <- as.numeric(max(as.Date(covid19_italia$data)) - min(as.Date(covid19_italia$data)) + 1)
-
-source("R_dataretrieve.r") # retrieves data from DPC GitHub
+day_count <- as.numeric(dim(covid19_italia)[1])
 
 top_1 <- dataset_Lombardia
 top_2 <- dataset_EmiliaRomagna
