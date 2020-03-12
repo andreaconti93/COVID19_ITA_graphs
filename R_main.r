@@ -21,5 +21,3 @@ top_5 <- dataset_Marche
 source("R_national.r") # plots the national graph
 source("R_regional.r") # plots the regional graphs
 source("R_thematic.r") # plots the thematic graphs
-
-print("Done")
