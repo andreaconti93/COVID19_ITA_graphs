@@ -5,6 +5,7 @@
 
 # Libraries
 library(dplyr)
+library(tibble)
 
 source("R_dataretrieve.r") # retrieves data from DPC GitHub
 
