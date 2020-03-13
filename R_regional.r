@@ -2,7 +2,8 @@
 clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalized, non-ICU", "Hospitalized, total") #Legenda
 colori <- c("red", "gray0", "seagreen4", "gold", "red3", "cyan", "mediumorchid3", "deepskyblue2", "navyblue") #Colors
 
-func_reg_graph <- function(dataset_cache, file_name) { # This function generate a general graph for each region
+# Generates regional graph for a given region
+func_reg_graph <- function(dataset_cache, file_name) {
   png(file_name, width = 2500, height = 1250, pointsize = 50)
   plot(dataset_cache$totale_casi,type = "l", col = colori[c(1)], xlab = "", ylab = "Cases", main = dataset_cache$denominazione_regione[[1]], xaxt='n', lwd = 3)
   lines(dataset_cache$deceduti, type = "l", lwd = 3, col = colori[c(2)])
@@ -18,26 +19,27 @@ func_reg_graph <- function(dataset_cache, file_name) { # This function generate 
   dev.off()
 }
 
-func_reg_graph(dataset_Abruzzo, "plot/regional/abruzzo.png")
-func_reg_graph(dataset_Basilicata, "plot/regional/basilicata.png")
-func_reg_graph(dataset_Calabria, "plot/regional/calabria.png")
-func_reg_graph(dataset_Campania, "plot/regional/campania.png")
-func_reg_graph(dataset_EmiliaRomagna, "plot/regional/emiliaromagna.png")
-func_reg_graph(dataset_FriuliVeneziaGiulia, "plot/regional/friuliveneziagiulia.png")
-func_reg_graph(dataset_Lazio, "plot/regional/lazio.png")
-func_reg_graph(dataset_Liguria, "plot/regional/liguria.png")
-func_reg_graph(dataset_Lombardia, "plot/regional/lombardia.png")
-func_reg_graph(dataset_Marche, "plot/regional/marche.png")
-func_reg_graph(dataset_Molise, "plot/regional/molise.png")
-func_reg_graph(dataset_Piemonte, "plot/regional/piemonte.png")
-func_reg_graph(dataset_Puglia, "plot/regional/puglia.png")
-func_reg_graph(dataset_Sardegna, "plot/regional/sardegna.png")
-func_reg_graph(dataset_Sicilia, "plot/regional/sicilia.png")
-func_reg_graph(dataset_Toscana, "plot/regional/toscana.png")
-#func_reg_graph(dataset_TrentinoAltoAdige, "plot/regional/trentinoaa.png") # Needs improvement!
-func_reg_graph(dataset_Umbria, "plot/regional/umbria.png")
-func_reg_graph(dataset_ValleDAosta, "plot/regional/valledaosta.png")
-func_reg_graph(dataset_Veneto, "plot/regional/veneto.png")
+# Plots regions
+for (region_code in 1:20) {
+  region_subset <- subset(covid19_regioni, codice_regione == region_code)
+  
+  # Handles and merge Trento and Bolzano
+  if (region_code == 4){
+    # Drops non-numerical columns
+    region_subset <- select(region_subset, -c(2:6))
+    # Converts to numeric
+    region_subset[, c(2:11)] <- sapply(region_subset[, c(2:11)], as.numeric)
+    # Aggregates by date, summing every other field
+    region_subset <- aggregate(. ~data, data=region_subset, sum)
+    # Inserts dropped columns after date (first) columns
+    region_subset <- add_column(region_subset, stato = "ITA", codice_regione = 4, denominazione_regione = "Trentino Alto Adige", lat = 46.06893511, long = 11.12123097, .after = 1)
+  }
+  
+  merged_region_name <- gsub(" ", "_", region_subset$denominazione_regione[1])
+  merged_region_name <- gsub("'", "_", merged_region_name)
+  region_plot_dir = paste("plot/regional/", merged_region_name, ".png", sep="")
+  func_reg_graph(region_subset, region_plot_dir)
+}
 
 
 
