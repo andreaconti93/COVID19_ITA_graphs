@@ -12,11 +12,11 @@ source("R_dataretrieve.r") # retrieves data from DPC GitHub
 day_count <- as.numeric(dim(covid19_italia)[1])
 
 # TODO: get top 5 regions
-top_1 <- dataset_Lombardia
-top_2 <- dataset_EmiliaRomagna
-top_3 <- dataset_Veneto
-top_4 <- dataset_Piemonte
-top_5 <- dataset_Marche
+top_1 <- subset(covid19_regioni, denominazione_regione == "Lombardia")
+top_2 <- subset(covid19_regioni, denominazione_regione == "Emilia Romagna")
+top_3 <- subset(covid19_regioni, denominazione_regione == "Veneto")
+top_4 <- subset(covid19_regioni, denominazione_regione == "Piemonte")
+top_5 <- subset(covid19_regioni, denominazione_regione == "Marche")
 
 source("R_national.r") # plots the national graph
 source("R_regional.r") # plots the regional graphs
