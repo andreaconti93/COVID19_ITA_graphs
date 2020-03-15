@@ -1,11 +1,11 @@
-# Automates plots and push changes every day, from 17 to 21, every 15 minutes
+# Automates plots and push changes every day, from 17 to 21 UTC, every 15 minutes
 
 name: generate_plots
 
 # Trigger
 on:
   schedule:
-      # runs every 15 minutes from 17 to 21
+      # runs every 15 minutes from 17 to 21 UTC
       - cron:  '*/15 17-21 * * *'
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
         Rscript R_libraries_CI.r
         Rscript R_main.r
         git add .
-        git commit -a -m "data update"
+        git diff-index --quiet HEAD || git commit -a -m "data update"
     
     # Pushes local changes
     - name: GitHub Push
