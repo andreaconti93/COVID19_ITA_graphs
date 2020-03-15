@@ -1,14 +1,12 @@
-# Automate plots and push changes every day, from 18:40 and every 6 hours
+# Automates plots and push changes every day, from 17 to 21, every 15 minutes
 
 name: generate_plots
 
 # Trigger
 on:
   schedule:
-      # runs every 6 hours starting from 05:40 UTC
-      # Meaning: in Italy, runs at 06:40, 12:40, 18:40 (relevant, since Protezione Civile's 
-      # data is updated every day at 18:30) and 00:40
-      - cron:  '40 5/6 * * *'
+      # runs every 15 minutes from 17 to 21
+      - cron:  '*/15 17-21 * * *'
 
 jobs:
   build:
