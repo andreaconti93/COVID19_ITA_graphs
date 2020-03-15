@@ -1,0 +1,39 @@
+# Automate plots and push changes every day, from 18:40 and every 6 hours
+
+name: generate_plots
+
+# Trigger
+on:
+  schedule:
+      # runs every 6 hours starting from 05:40 UTC
+      # Meaning: in Italy, runs at 06:40, 12:40, 18:40 (relevant, since Protezione Civile's 
+      # data is updated every day at 18:30) and 00:40
+      - cron:  '40 5/6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Sets up repo and R
+    - uses: actions/checkout@v2
+    - uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '3.5.3'
+
+    # Sets up R libraries, runs code, generates plots, sets up git, adds new unversioned
+    # files (if any) and commits to local
+    - name: Runs R code and commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        Rscript R_libraries_CI.r
+        Rscript R_main.r
+        git add .
+        git commit -a -m "data update"
+    
+    # Pushes local changes
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
+        github_token: $\{{ secrets.GITHUB_TOKEN }
