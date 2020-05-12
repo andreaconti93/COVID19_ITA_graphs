@@ -14,7 +14,7 @@ day_count <- as.numeric(dim(covid19_italia)[1])
 
 # TODO: get top 5 regions
 top_1 <- subset(covid19_regioni, denominazione_regione == "Lombardia")
-top_2 <- subset(covid19_regioni, denominazione_regione == "Emilia Romagna")
+top_2 <- subset(covid19_regioni, denominazione_regione == "Emilia-Romagna") # Changed the name of "Emilia-Romagna" to reflect the change in the data set
 top_3 <- subset(covid19_regioni, denominazione_regione == "Veneto")
 top_4 <- subset(covid19_regioni, denominazione_regione == "Piemonte")
 top_5 <- subset(covid19_regioni, denominazione_regione == "Marche")

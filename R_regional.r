@@ -1,3 +1,4 @@
+
 # This R code generates REGIONAL graphs
 clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalized, non-ICU", "Hospitalized, total") #Legenda
 colori <- c("red", "gray0", "seagreen4", "gold", "red3", "cyan", "mediumorchid3", "deepskyblue2", "navyblue") #Colors
@@ -23,6 +24,15 @@ func_reg_graph <- function(dataset_cache, file_name) {
 for (region_code in 1:20) {
   region_subset <- subset(covid19_regioni, codice_regione == region_code)
   
+  # To fix the 'sum is not meaningful for factors' error, remove unnecessary character variables
+  region_subset$casi_testati = NULL
+  region_subset$note_en = NULL
+  region_subset$note_it = NULL
+  
+  # Ensure that 'tamponi' is a numeric variable
+  region_subset$tamponi = 
+    as.numeric(region_subset$tamponi)
+  
   # Handles and merge Trento and Bolzano
   if (region_code == 4){
     # Drops non-numerical columns
@@ -40,6 +50,5 @@ for (region_code in 1:20) {
   region_plot_dir = paste("plot/regional/", merged_region_name, ".png", sep="")
   func_reg_graph(region_subset, region_plot_dir)
 }
-
 
 
