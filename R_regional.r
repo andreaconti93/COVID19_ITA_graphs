@@ -1,6 +1,6 @@
 
 # This R code generates REGIONAL graphs
-clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive, new", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalized, non-ICU", "Hospitalized, total") #Legenda
+clegenda <- c("Positive, total", "Deceased", "Recovered", "Positive (new, delta)", "Positive, current", "Home confinement", "Hospitalized, ICU", "Hospitalized, non-ICU", "Hospitalized, total") #Legenda
 colori <- c("red", "gray0", "seagreen4", "gold", "red3", "cyan", "mediumorchid3", "deepskyblue2", "navyblue") #Colors
 
 # Generates regional graph for a given region
@@ -9,7 +9,7 @@ func_reg_graph <- function(dataset_cache, file_name) {
   plot(dataset_cache$totale_casi,type = "l", col = colori[c(1)], xlab = "", ylab = "Cases", main = dataset_cache$denominazione_regione[[1]], xaxt='n', lwd = 3)
   lines(dataset_cache$deceduti, type = "l", lwd = 3, col = colori[c(2)])
   lines(dataset_cache$dimessi_guariti, type = "l", lwd = 3, col = colori[c(3)])
-  lines(dataset_cache$nuovi_attualmente_positivi, type = "l", lwd = 3, col = colori[c(4)])
+  lines(dataset_cache$nuovi_positivi, type = "l", lwd = 3, col = colori[c(4)])
   lines(dataset_cache$totale_attualmente_positivi, type = "l", lwd = 3, col = colori[c(5)])
   lines(dataset_cache$isolamento_domiciliare, type = "l", lwd = 3, col = colori[c(6)])
   lines(dataset_cache$terapia_intensiva, type = "l", lwd = 3, col = colori[c(7)])
