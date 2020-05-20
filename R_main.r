@@ -9,6 +9,9 @@ library(tibble)
 
 source("R_dataretrieve.r") # retrieves data from DPC GitHub
 
+for(i in covid19_regioni$codice_regione) if(i %in% "21") junk$nm <- "XXX"
+
+
 # Number of days
 day_count <- as.numeric(dim(covid19_italia)[1])
 
