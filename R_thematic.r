@@ -66,4 +66,16 @@ legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$
 axis(1, at=1:day_count, labels=top_1$data, las = 2, cex.axis = 0.5)
 dev.off()
 
+# GRAPH 7: variaton, top 5
+png("plot/thematic/Top5_delta.png", width = 2500, height = 1250, pointsize = 50)
+plot(top_1$variazione_totale_positivi,type = "l", col = "red", xlab = "", ylab = "Cases", main = "Positive case variation (delta)", xaxt='n', lwd = 3)
+lines(top_2$variazione_totale_positivi, type = "l", lwd = 3, col = "blue")
+lines(top_3$variazione_totale_positivi, type = "l", lwd = 3, col = "green")
+lines(top_4$variazione_totale_positivi, type = "l", lwd = 3, col = "orange")
+lines(top_5$variazione_totale_positivi, type = "l", lwd = 3, col = "purple")
+abline(h = 0, col = "black", lwd = 3)
+legend("topleft", inset = .02, legend=c(top_1$denominazione_regione[[1]], top_2$denominazione_regione[[1]], top_3$denominazione_regione[[1]], top_4$denominazione_regione[[1]], top_5$denominazione_regione[[1]]), col=c("red", "blue", "green", "orange", "purple"), lty=1, cex=0.5, lwd = 4)
+axis(1, at=1:day_count, labels=top_1$data, las = 2, cex.axis = 0.5)
+dev.off()
+
 
