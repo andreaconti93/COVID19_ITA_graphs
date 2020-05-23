@@ -20,8 +20,8 @@ func_nat_graph <- function(dataset_cache, file_name) { # This function generate 
   lines(dataset_cache$terapia_intensiva, type = "l", lwd = 3, col = colori[c(7)])
   lines(dataset_cache$ricoverati_con_sintomi, type = "l", lwd = 3, col = colori[c(8)])
   lines(dataset_cache$totale_ospedalizzati, type = "l", lwd = 3, col = colori[c(9)])
-  legend("topleft", inset = .02, legend=clegenda, col=colori, lty=1, cex=0.5, lwd = 6)
-  axis(1, at=1:day_count, labels=dataset_cache$data, las = 2, cex.axis = 0.5)
+  legend("topleft", inset = .02, legend=clegenda, col=colori, lty=1, cex=0.75, lwd = 6)
+  axis(1, at=1:day_count, labels=dataset_cache$data, las = 2, cex.axis = 0.4)
  dev.off()
 }
 
