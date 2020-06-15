@@ -13,6 +13,9 @@ source("R_dataretrieve.r") # retrieves data from DPC GitHub
 # Number of days
 day_count <- as.numeric(dim(covid19_italia)[1])
 
+# Dates font size
+font_y <- 0.5
+
 # TODO: get top 5 regions
 top_1 <- subset(covid19_regioni, denominazione_regione == "Lombardia")
 top_2 <- subset(covid19_regioni, denominazione_regione == "Piemonte")

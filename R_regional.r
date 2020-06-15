@@ -16,7 +16,7 @@ func_reg_graph <- function(dataset_cache, file_name) {
   lines(dataset_cache$ricoverati_con_sintomi, type = "l", lwd = 3, col = colori[c(8)])
   lines(dataset_cache$totale_ospedalizzati, type = "l", lwd = 3, col = colori[c(9)])
   legend("topleft", inset = .02, legend=clegenda, col=colori, lty=1, cex=0.75, lwd = 6)
-  axis(1, at=1:day_count, labels=dataset_cache$data, las = 2, cex.axis = 0.4)
+  axis(1, at=1:day_count, labels=dataset_cache$data, las = 2, cex.axis = font_y)
   dev.off()
 }
 

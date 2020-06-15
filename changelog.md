@@ -1,4 +1,8 @@
 # Changelog
+## 2020-06-15
+- Font size improvement
+- Code improvements
+
 ## 2020-03-13
 - Added Trentino Alto Adige regional graph (thanks [@vezzavide](https://github.com/vezzavide))
 - Code improvements (thanks [@vezzavide](https://github.com/vezzavide))
