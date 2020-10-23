@@ -24,5 +24,5 @@ top_4 <- subset(covid19_regioni, denominazione_regione == "Veneto")
 top_5 <- subset(covid19_regioni, denominazione_regione == "Toscana")
 
 source("R_national.r") # plots the national graph
-source("R_regional.r") # plots the regional graphs
+#source("R_regional.r") # plots the regional graphs
 source("R_thematic.r") # plots the thematic graphs

@@ -22,16 +22,14 @@ func_reg_graph <- function(dataset_cache, file_name) {
 
 # Plots regions
 for (region_code in 1:20) {
-  region_subset <- subset(covid19_regioni, codice_regione == region_code)
+  region_subset <- subset(covid19_regioni, codice_regione == 4)
   
   # To fix the 'sum is not meaningful for factors' error, remove unnecessary character variables
   region_subset$casi_testati = NULL
-  region_subset$note_en = NULL
-  region_subset$note_it = NULL
+  region_subset$note = NULL
   
   # Ensure that 'tamponi' is a numeric variable
-  region_subset$tamponi = 
-    as.numeric(region_subset$tamponi)
+  region_subset$tamponi = as.numeric(region_subset$tamponi)
   
   # Handles and merge Trento and Bolzano
   if (region_code == 4){
